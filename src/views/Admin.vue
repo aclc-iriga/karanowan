@@ -230,7 +230,7 @@
                             <v-row class="justify-center">
                                 <v-col
                                     v-for="technical in technicals" :key="technical.id"
-                                    md="3"
+                                    md="4"
                                 >
                                     <v-card class="text-center mb-5" :class="{ 'text-warning': technical.calling }" flat>
                                         <v-card-title class="pt-16 font-weight-bold">
@@ -248,7 +248,7 @@
 
                                 <v-col
                                     v-for="judge in judges" :key="judge.id"
-                                    md="3"
+                                    md="4"
                                 >
                                     <v-card class="text-center mb-5" :class="{ 'text-warning': judge.calling }" flat>
                                         <v-card-title class="pt-16 font-weight-bold">
@@ -278,6 +278,16 @@
                 <v-col cols="12" sm="9" md="7" lg="5">
                     <div style="padding: 15px">
                         <table class="table-winners" style="width: 100%">
+                            <thead>
+                            <tr>
+                                <th colspan="3" class="text-center pb-10">
+                                    <span class="text-h4 text-uppercase">{{ event.title }}</span>
+                                    <div class="result-title text-center opacity-75 d-none">
+                                        <h6 class="text-h6 ma-0">{{ $store.state.app.title }}</h6>
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
                             <tbody>
                                 <template
                                     v-for="(winner, winnerIndex) in Object.entries(winners).reverse()"
