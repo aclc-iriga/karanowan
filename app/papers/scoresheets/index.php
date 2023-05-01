@@ -37,28 +37,28 @@
     <!-- RATING SHEET -->
     <div class="container-fluid mt-5">
         <div class="row">
-            <div class="col-md-6 text-center">
-                <h1 class="text-uppercase mb-3"><?= Competition::findById(1)->getTitle() ?></h1>
-                <h3>R A T I N G&nbsp;&nbsp;&nbsp;&nbsp;S H E E T</h3>
-            </div>
-            <div class="col-md-6 text-center">
-                <h1>_____________________</h1>
-                <h3>Judge #&nbsp;</h3>
-            </div>
-        </div>
-
-        <hr class="mb-4"/>
-
-        <div class="row">
             <!-- events -->
             <?php foreach((Category::findBySlug('category'))->getAllEvents() as $event) { ?>
-                <div class="py-5">
+                <div class="pt-3 pb-5 mb-5">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <h4 class="text-uppercase"><?= Competition::findById(1)->getTitle() ?></h4>
+                            <h3>R A T I N G&nbsp;&nbsp;&nbsp;&nbsp;S H E E T</h3>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <h1>_____________________</h1>
+                            <h3>Judge #&nbsp;</h3>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4"/>
+
                     <table class="table">
                         <thead>
                             <tr class="table-secondary">
                                 <!-- event title -->
                                 <th colspan="3" rowspan="2" class="text-center bl bt br">
-                                    <h3 class="text-center text-uppercase m-0"><?= $event->getTitle() ?></h3>
+                                    <h2 class="text-center text-uppercase fw-bold m-0"><?= $event->getTitle() ?></h2>
                                 </th>
 
                                 <!-- criteria title headers -->
@@ -140,22 +140,21 @@
     <!-- DEDUCTION SHEET -->
     <div class="container-fluid mt-5" style="page-break-before: always">
         <div class="row">
-            <div class="col-md-6 text-center">
-                <h1 class="text-uppercase mb-3"><?= Competition::findById(1)->getTitle() ?></h1>
-                <h3>D E D U C T I O N&nbsp;&nbsp;&nbsp;&nbsp;S H E E T</h3>
-            </div>
-            <div class="col-md-6 text-center">
-                <h1>_____________________</h1>
-                <h3>Technical #&nbsp;</h3>
-            </div>
-        </div>
-
-        <hr class="mb-4"/>
-
-        <div class="row">
             <!-- events -->
             <?php foreach((Category::findBySlug('technical'))->getAllEvents() as $event) { ?>
-                <div class="py-5">
+                <div class="pt-3 pb-5 mb-5">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <h4 class="text-uppercase mb-3"><?= Competition::findById(1)->getTitle() ?></h4>
+                            <h3>D E D U C T I O N&nbsp;&nbsp;&nbsp;&nbsp;S H E E T</h3>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <h1>_____________________</h1>
+                            <h3>Technical #&nbsp;</h3>
+                        </div>
+                    </div>
+
+                    <hr class="mb-4"/>
                     <table class="table">
                         <thead>
                         <tr class="table-secondary">
@@ -166,7 +165,7 @@
 
                             <!-- deductions value header -->
                             <th class="table-danger br" style="width: 40%">
-                                <h4 class="text-center text-uppercase m-0">DEDUCTIONS</h4>
+                                <h2 class="text-center text-uppercase fw-bold m-0">DEDUCTIONS</h2>
                             </th>
                         </tr>
                         <tr class="table-secondary">
