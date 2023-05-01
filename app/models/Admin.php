@@ -184,6 +184,12 @@ class Admin extends User
                 'average' => 0
             ];
 
+            // apply deductions (if any) to ratings when there are no judges
+            if($judges_total <= 0 && $technicals_total > 0) {
+                $team_row['ratings']['total']   = 0 - $team_row['deductions']['total'];
+                $team_row['ratings']['average'] = 0 - $team_row['deductions']['average'];
+            }
+
             $rank_total = [
                 'dense'      => 0,
                 'fractional' => 0

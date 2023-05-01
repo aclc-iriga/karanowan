@@ -25,7 +25,7 @@ if(isset($_POST['insertdata'])) {
         $file_name = time() . '_' . $file_name;
         move_uploaded_file($file_tmp, "uploads/" . $file_name);
     } else {
-        $file_name = 'no-avatar.jpg';
+        $file_name = 'contingent.jpg';
     }
 
     $team   = new Team();

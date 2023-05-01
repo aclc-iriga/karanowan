@@ -179,7 +179,7 @@ class Deduction extends App
         if(!self::stored($this->technical_id, $this->event_id, $this->team_id)) {
             // check value
             $min = 0;
-            $max = $event->getTotalCriteriaPercentage();
+            $max = 100; // $event->getTotalCriteriaPercentage();
             if($this->value < $min || $this->value > $max)
                 App::returnError('HTTP/1.1 422', 'Insert Error: deduction for event [slug = ' . $event->getSlug() . '] must be from ' . $min . ' to ' . $max . ', [given = ' . $this->value . '].');
 
@@ -234,7 +234,7 @@ class Deduction extends App
 
         // check value
         $min = 0;
-        $max = $event->getTotalCriteriaPercentage();
+        $max = 100; // $event->getTotalCriteriaPercentage();
         if($this->value < $min || $this->value > $max)
             App::returnError('HTTP/1.1 422', 'Update Error: deduction for event [slug = ' . $event->getSlug() . '] must be from ' . $min . ' to ' . $max . ', [given = ' . $this->value . '].');
 

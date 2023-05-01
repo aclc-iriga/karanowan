@@ -17,7 +17,7 @@ $config = [
     'host'   => 'localhost',
     'user'   => 'root',
     'pass'   => '',
-    'dbname' => 'bbsv-buhi'
+    'dbname' => 'bowa-bowaan'
 ];
 
 $conn = new mysqli($config['host'], $config['user'], $config['pass'], $config['dbname']);
