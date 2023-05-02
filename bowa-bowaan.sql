@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2023 at 03:56 PM
+-- Generation Time: May 02, 2023 at 04:37 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -387,7 +387,7 @@ CREATE TABLE `technicals` (
 --
 
 INSERT INTO `technicals` (`id`, `number`, `name`, `avatar`, `username`, `password`, `called_at`, `pinged_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Technical 01', 'no-avatar.jpg', 'technical01', 'technical01', NULL, '2023-05-02 04:42:37', '2023-02-19 08:58:58', '2023-05-02 13:54:58');
+(1, 1, 'Technical 01', 'no-avatar.jpg', 'technical01', 'technical01', NULL, NULL, '2023-02-19 08:58:58', '2023-05-02 14:37:40');
 
 -- --------------------------------------------------------
 
