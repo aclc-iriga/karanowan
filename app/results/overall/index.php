@@ -75,9 +75,11 @@
         }
 
         // compute totals
-        $total_average_equiv  = $average_equiv_1  + $average_equiv_2;
-        $total_rank_ave_equiv = $rank_ave_equiv_1 + $rank_ave_equiv_2;
         $deduction = $result_deductions['teams'][$team_key]['deductions']['average'];
+
+        $total_average_equiv  = $average_equiv_1  + $average_equiv_2;
+        $net_average = $total_average_equiv - $deduction;
+        $total_rank_ave_equiv = $rank_ave_equiv_1 + $rank_ave_equiv_2;
         $net_total = $total_rank_ave_equiv - $deduction;
 
         // push $net_total to $unique_net_totals
@@ -103,7 +105,8 @@
                     'rank_ave_equiv' => $rank_ave_equiv_2
                 ]
             ],
-            'average'   => $total_average_equiv,
+            'average'     => $total_average_equiv,
+            'net_average' => $net_average,
             'deduction' => $deduction,
             'rank' => [
                 'total'     => $total_rank_ave_equiv,
@@ -150,7 +153,7 @@
             $result[$group[$j]]['rank']['initial'] = $initial_rank;
 
             // compute adjusted average
-            $adjusted_rank = $initial_rank - ($result[$group[$j]]['average'] * 0.01);
+            $adjusted_rank = $initial_rank - ($result[$group[$j]]['net_average'] * 0.01);
             $result[$group[$j]]['rank']['adjusted'] = $adjusted_rank;
 
             // push to $unique_adjusted_ranks
@@ -331,8 +334,8 @@
                     <!-- deduction spacer -->
                     <td class="br"></td>
 
-                    <!-- net total spacer -->
-                    <td class="br"></td>
+                    <!-- net average -->
+                    <td class="br pe-3" align="right"><h5 class="m-0 opacity-75"><?= number_format($team['net_average'], 2) ?></h5></td>
 
                     <!-- initial rank (spacer) -->
                     <td class="br"></td>
