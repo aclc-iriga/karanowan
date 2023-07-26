@@ -97,3 +97,12 @@ Here's how to compile the project for production deployment:
    For example:
      - <http://localhost/bowa-bowaan>
      - <http://192.168.1.99/bowa-bowaan>
+
+
+#### Admin Dashboard
+Access the **admin dashboard** at <http://localhost/bowa-bowaan/app>.
+The default ***username*** and ***password*** is `admin`.
+
+#### Printing Results
+For **printing results**, click the print button in your browser or press `CTRL + P`,
+then properly set up the page for printing.
