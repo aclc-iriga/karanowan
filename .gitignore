@@ -19,7 +19,6 @@ app/_test.php
 app/_env.php
 app/config/database.php
 app/crud/uploads/*
-!app/crud/uploads/contingent.jpg
 !app/crud/uploads/no-avatar.jpg
 !app/crud/dist
 /cypress/videos/

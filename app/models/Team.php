@@ -12,7 +12,7 @@ class Team extends App
     protected $number = 0;
     protected $name;
     protected $location;
-    protected $avatar = 'contingent.jpg';
+    protected $avatar = 'no-avatar.jpg';
     protected $disabled = false;
 
 
