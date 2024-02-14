@@ -239,7 +239,7 @@ shuffle($tops_unordered);
         <thead class="bt">
         <tr class="table-secondary">
             <th colspan="3" rowspan="3" class="text-center bt br bl bb">
-                <h1 class="m-0"><?= implode(',', $titles) ?></h1>
+                <h1 class="m-0">Top <?= sizeof($titles) ?></h1>
                 <h5><?= $competition_title ?></h5>
             </th>
             <?php for($i=0; $i<sizeof($events); $i++) { ?>
