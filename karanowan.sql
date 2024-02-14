@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2024 at 10:14 PM
+-- Generation Time: Feb 14, 2024 at 06:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -46,7 +46,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `number`, `name`, `avatar`, `username`, `password`, `active_portion`, `called_at`, `pinged_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 'DEVELOPMENT', 'no-avatar.jpg', 'admin', 'admin', NULL, NULL, NULL, '2023-02-19 07:36:32', '2023-05-21 21:02:37');
+(1, 1, 'DEVELOPMENT', 'no-avatar.jpg', 'admin', 'admin', NULL, NULL, NULL, '2023-02-19 07:36:32', '2024-02-14 05:52:58');
 
 -- --------------------------------------------------------
 
@@ -334,7 +334,7 @@ CREATE TABLE `teams` (
   `id` tinyint(3) UNSIGNED NOT NULL,
   `number` tinyint(4) NOT NULL DEFAULT 0,
   `name` varchar(255) NOT NULL,
-  `location` varchar(32) NOT NULL,
+  `location` text NOT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -345,13 +345,13 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `number`, `name`, `location`, `avatar`, `created_at`, `updated_at`) VALUES
-(1, 1, 'SAN VICENTE, STA. CRUZ, TRES REYES, BATO NATIONAL HIGH SCHOOL, OCAMPO ACADEMY TECHNOLOGICAL INSTITUTE', 'CLUSTER 1', 'no-avatar.jpg', '2024-02-13 19:09:06', '2024-02-13 19:09:06'),
-(2, 2, 'DIVINA PASTORA, SAN RAFAEL, SANTIAGO, TABURNAL LEARNING SCHOOL, HOLY TRINITY COLLEGE OF CAMARINES SUR', 'CLUSTER 2', 'no-avatar.jpg', '2024-02-13 19:09:35', '2024-02-13 19:09:35'),
-(3, 3, 'SAN MIGUEL, AGOS, MASOLI, NINO JESUS, MASOLI HIGH SCHOOL', 'CLUSTER 3', 'no-avatar.jpg', '2024-02-13 19:09:53', '2024-02-13 19:09:53'),
-(4, 4, 'BACOLOD, NEIGHBORHOOD, TAGPOLO, SAN ROQUE, SAGRADA, SAN ROQUE HIGH SCHOOL', 'CLUSTER 4', 'no-avatar.jpg', '2024-02-13 19:10:23', '2024-02-13 19:10:23'),
-(5, 5, 'CAWACAGAN, SAN JUAN, GOYUDAN, SALVACION, BULUANG, ST. JOHN THE BAPTIST INSTITUTE OF BICOL, INC., SALVACION NATIONAL HIGH SCHOOL', 'CLUSTER 5', 'no-avatar.jpg', '2024-02-13 19:10:42', '2024-02-13 19:10:42'),
-(6, 6, 'DEL ROSARIO, LUBIGAN, CRISTO REY, CARICOT, LOBONG, SOOC, COTMON, MANGGA, DIVINE SHEPHERD HIGH SCHOOL', 'CLUSTER 6', 'no-avatar.jpg', '2024-02-13 19:11:01', '2024-02-13 19:11:48'),
-(7, 7, 'PAGATPATAN, PALO, PAYAK, SAN ISIDRO, MAINIT, PAYAK HIGH SCHOOL, MATAAS NA PAARALAN NG PAGATPATAN', 'CLUSTER 7', 'no-avatar.jpg', '2024-02-13 19:11:40', '2024-02-13 19:11:40');
+(1, 1, 'Cluster 1', 'SAN VICENTE, STA. CRUZ, TRES REYES, BATO NATIONAL HIGH SCHOOL, OCAMPO ACADEMY TECHNOLOGICAL INSTITUTE', 'karanowan-logo.png', '2024-02-13 19:09:06', '2024-02-14 05:48:56'),
+(2, 2, 'Cluster 2', 'DIVINA PASTORA, SAN RAFAEL, SANTIAGO, TABURNAL LEARNING SCHOOL, HOLY TRINITY COLLEGE OF CAMARINES SUR', 'karanowan-logo.png', '2024-02-13 19:09:35', '2024-02-14 05:49:00'),
+(3, 3, 'Cluster 3', 'SAN MIGUEL, AGOS, MASOLI, NINO JESUS, MASOLI HIGH SCHOOL', 'karanowan-logo.png', '2024-02-13 19:09:53', '2024-02-14 05:49:05'),
+(4, 4, 'Cluster 4', 'BACOLOD, NEIGHBORHOOD, TAGPOLO, SAN ROQUE, SAGRADA, SAN ROQUE HIGH SCHOOL', 'karanowan-logo.png', '2024-02-13 19:10:23', '2024-02-14 05:49:08'),
+(5, 5, 'Cluster 5', 'CAWACAGAN, SAN JUAN, GOYUDAN, SALVACION, BULUANG, ST. JOHN THE BAPTIST INSTITUTE OF BICOL, INC., SALVACION NATIONAL HIGH SCHOOL', 'karanowan-logo.png', '2024-02-13 19:10:42', '2024-02-14 05:49:12'),
+(6, 6, 'Cluster 6', 'DEL ROSARIO, LUBIGAN, CRISTO REY, CARICOT, LOBONG, SOOC, COTMON, MANGGA, DIVINE SHEPHERD HIGH SCHOOL', 'karanowan-logo.png', '2024-02-13 19:11:01', '2024-02-14 05:49:16'),
+(7, 7, 'Cluster 7', 'PAGATPATAN, PALO, PAYAK, SAN ISIDRO, MAINIT, PAYAK HIGH SCHOOL, MATAAS NA PAARALAN NG PAGATPATAN', 'karanowan-logo.png', '2024-02-13 19:11:40', '2024-02-14 05:49:20');
 
 -- --------------------------------------------------------
 
