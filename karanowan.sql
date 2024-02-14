@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2024 at 06:53 AM
+-- Generation Time: Feb 14, 2024 at 06:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -394,6 +394,14 @@ CREATE TABLE `technical_event` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `technical_event`
+--
+
+INSERT INTO `technical_event` (`id`, `technical_id`, `event_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2024-02-14 17:22:08', '2024-02-14 17:22:30'),
+(2, 1, 2, '2024-02-14 17:22:11', '2024-02-14 17:22:32');
+
 -- --------------------------------------------------------
 
 --
@@ -408,6 +416,18 @@ CREATE TABLE `titles` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `titles`
+--
+
+INSERT INTO `titles` (`id`, `event_id`, `rank`, `title`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '1st Place', '2024-02-14 15:32:51', '2024-02-14 17:31:44'),
+(2, 1, 2, '2nd Place', '2024-02-14 15:32:51', '2024-02-14 17:32:19'),
+(3, 1, 3, '3rd Place', '2024-02-14 15:32:51', '2024-02-14 17:32:29'),
+(4, 2, 1, '1st Place', '2024-02-14 15:32:52', '2024-02-14 17:33:11'),
+(5, 2, 2, '2nd Place', '2024-02-14 15:32:52', '2024-02-14 17:33:14'),
+(6, 2, 3, '3rd Place', '2024-02-14 15:32:52', '2024-02-14 17:33:17');
 
 --
 -- Indexes for dumped tables
@@ -648,13 +668,13 @@ ALTER TABLE `technicals`
 -- AUTO_INCREMENT for table `technical_event`
 --
 ALTER TABLE `technical_event`
-  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `titles`
 --
 ALTER TABLE `titles`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
