@@ -16,11 +16,11 @@ const EVENTS = [
     [
         'slug'    => 'performance',
         'percent' => 50
-    ],
+    ]
 ];
 
 // initialize titles
-$titles = ['Overall Champion', '1st Runner up', '2nd Runner up'];
+$titles = ['Overall Champion'];
 
 // initialize admin
 $admin = new Admin();
@@ -29,16 +29,35 @@ $admin = new Admin();
 $events  = [];
 $results = [];
 $competition_title = '';
-$judges     = [];
-$technicals = [];
+$judges        = [];
+$judge_ids     = [];
+$technicals    = [];
+$technical_ids = [];
 for($i=0; $i<sizeof(EVENTS); $i++) {
     $events[]  = Event::findBySlug(EVENTS[$i]['slug']);
     $results[] = $admin->tabulate($events[$i]);
 
-    if($i == 2) {
+    if($i == 1)
         $competition_title = $events[$i]->getCategory()->getCompetition()->getTitle();
-        $judges     = $events[$i]->getAllJudges();
-        $technicals = $events[$i]->getAllTechnicals();
+
+    $event_judges = $events[$i]->getAllJudges();
+    for($j=0; $j<sizeof($event_judges); $j++) {
+        $event_judge    = $event_judges[$j];
+        $event_judge_id = $event_judge->getId();
+        if(!in_array($event_judge_id, $judge_ids)) {
+            $judges[]    = [ ...$event_judge->toArray(), 'is_chairman' =>  $event_judge->isChairmanOfEvent($events[$i]), 'event' => $events[$i]->getTitle()];
+            $judge_ids[] = $event_judge_id;
+        }
+    }
+
+    $event_technicals = $events[$i]->getAllTechnicals();
+    for($j=0; $j<sizeof($event_technicals); $j++) {
+        $event_technical    = $event_technicals[$j];
+        $event_technical_id = $event_technical->getId();
+        if(!in_array($event_technical_id, $technical_ids)) {
+            $technicals[]    = $event_technical->toArray();
+            $technical_ids[] = $event_technical_id;
+        }
     }
 }
 
@@ -239,7 +258,7 @@ shuffle($tops_unordered);
         <thead class="bt">
         <tr class="table-secondary">
             <th colspan="3" rowspan="3" class="text-center bt br bl bb">
-                <h1 class="m-0">Top <?= sizeof($titles) ?></h1>
+                <h1 class="m-0"><?= implode(',', $titles) ?></h1>
                 <h5><?= $competition_title ?></h5>
             </th>
             <?php for($i=0; $i<sizeof($events); $i++) { ?>
@@ -343,20 +362,66 @@ shuffle($tops_unordered);
     <div class="container-fluid">
         <div class="row justify-content-center">
             <?php foreach($judges as $judge) { ?>
-                <div class="col-md-3">
-                    <div class="mt-5 pt-3 text-center">
-                        <h6 class="mb-0"><?= $judge->getName() ?></h6>
+                <div class="col-4 col-sm-4 col-md-4">
+                    <div class="mt-5 pt-4 text-center">
+                        <h5 class="mb-0"><?= $judge['name'] ?></h5>
                     </div>
                     <div class="text-center">
                         <p class="mb-0">
-                            Judge <?= $judge->getNumber() ?>
-                            <?php if($judge->isChairmanOfEvent($events[0])) { ?>
+                            Judge <?= $judge['number'] ?>
+                            <?php if($judge['is_chairman']) { ?>
                                 * (Chairman)
                             <?php } ?>
+                            <br/>
+                            <small style="opacity: 0.8"><?= $judge['event'] ?></small>
                         </p>
                     </div>
                 </div>
             <?php } ?>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="container-fluid mt-5 pt-5" style="page-break-before: always;">
+        <div class="col-md-6 offset-md-3" align="center">
+            <h4 class="opacity-75"><?= $competition_title ?></h4>
+            <?php if(sizeof($tops_ordered) > 0 && sizeof($result) > 0) { ?>
+                <h1 style="margin-bottom: 45px;"><?= $result['team_'.$tops_ordered[0]]['title'] ?></h1>
+            <?php } ?>
+            <div style="width: 80%;">
+                <table class="table table-bordered mt-3">
+                    <tbody>
+                    <?php
+                    foreach($tops_ordered as $team_id) {
+                        $team = $result['team_'.$team_id];
+                        ?>
+                        <tr>
+                            <!-- number -->
+                            <!--<td class="pe-3 fw-bold text-center">
+                                <h3 class="m-0">
+                                    <?= $team['info']['number'] ?>
+                                </h3>
+                            </td>-->
+
+                            <!-- avatar -->
+                            <td style="width: 144px;">
+                                <img
+                                        src="../../crud/uploads/<?= $team['info']['avatar'] ?>"
+                                        alt="<?= $team['info']['number'] ?>"
+                                        style="width: 100%; border-radius: 100%"
+                                >
+                            </td>
+
+                            <!-- name -->
+                            <td style="padding-left: 20px; padding-right: 20px;">
+                                <h2 class="text-uppercase m-0"><?= $team['info']['name'] ?></h2>
+                                <h5 class="m-0"><?= $team['info']['location'] ?></h5>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
